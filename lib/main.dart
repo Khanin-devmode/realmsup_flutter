@@ -32,11 +32,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  final client = Client();
 
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
+  }
+
+  @override
+  void initState() {
+    client.getAccessCode();
+
+    super.initState();
   }
 
   @override
@@ -57,11 +65,19 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            // ElevatedButton(
+            //   onPressed: () async {
+            //     client.getAccessCode();
+            //   },
+            //   child: Text('Get access token'),
+            // ),
             ElevatedButton(
-              onPressed: () {
-                getAccessCode();
+              onPressed: () async {
+                if (client.accessToken.isNotEmpty) {
+                  client.callRealmSearch();
+                }
               },
-              child: Text('Get access token'),
+              child: Text('Call Api'),
             ),
           ],
         ),
