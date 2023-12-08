@@ -25,7 +25,7 @@ const secret = 'KRHK62grnG0a8e2swGbOaJi1FkjRDr0f';
 // will redirect the resource owner here once they've authorized the
 // client. The redirection will include the authorization code in the
 // query parameters.
-final redirectUrl = Uri.parse('https://realmsup.com');
+final redirectUrl = Uri.parse('https://realmsup.com/oauth2-redirect');
 
 /// A file in which the users credentials are stored persistently. If the server
 /// issues a refresh token allowing the client to refresh outdated credentials,
